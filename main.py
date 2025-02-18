@@ -45,7 +45,7 @@ async def update_bio_with_track():
 
                     base_text = f"Слушает Spotify: {artist_name} - "
                     time_text = f" ({progress_time} из {duration_time})"
-                    max_track_length = 70 - len(base_text) - len(time_text) # Change 70 to 140, if you have Telegram Premium.
+                    max_track_length = 70 - len(base_text) - len(time_text)
 
                     if len(track_name) > max_track_length:
                         track_name = track_name[:max_track_length - 3] + "..."
@@ -65,6 +65,11 @@ async def update_bio_with_track():
                 print(f'Обновлено био: {bio_text}')
 
             await asyncio.sleep(15)
-            
+
 with client:
     client.loop.run_until_complete(update_bio_with_track())
+
+if __name__ == "__main__":
+    client.start()
+    asyncio.run(update_bio_with_track())
+
